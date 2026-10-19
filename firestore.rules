@@ -1,0 +1,53 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 64 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // Test connection doc
+    match /test/{docId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // System configuration (payment numbers for bkash, nagad, rocket)
+    match /system/{docId} {
+      allow read, write: if true;
+    }
+
+    // Manual deposit requests submitted by players and managed by admin
+    match /deposit_requests/{requestId} {
+      allow read, write: if true;
+    }
+
+    // Manual withdrawal requests submitted by players and managed by admin
+    match /withdrawal_requests/{requestId} {
+      allow read, write: if true;
+    }
+
+    // User profile & Server Wallet document
+    match /users/{userId} {
+      allow read, write: if true;
+
+      // User deposit & withdrawal history
+      match /transactions/{transactionId} {
+        allow read, write: if true;
+      }
+
+      // User bets history
+      match /bets/{betId} {
+        allow read, write: if true;
+      }
+    }
+  }
+}

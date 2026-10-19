@@ -1,0 +1,114 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile with balance wallet and account information",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "phoneNumber": { "type": "string" },
+        "balance": { "type": "number" },
+        "userCode": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "balance"]
+    },
+    "DepositRequest": {
+      "title": "DepositRequest",
+      "description": "Player manual bKash/Nagad/Rocket deposit transaction requests",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "userCode": { "type": "string" },
+        "userIdentifier": { "type": "string" },
+        "method": { "type": "string", "enum": ["bkash", "nagad", "rocket"] },
+        "targetNumber": { "type": "string" },
+        "senderNumber": { "type": "string" },
+        "trxId": { "type": "string" },
+        "amount": { "type": "number" },
+        "status": { "type": "string", "enum": ["pending", "approved", "rejected"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "method", "senderNumber", "trxId", "amount", "status"]
+    },
+    "WithdrawalRequest": {
+      "title": "WithdrawalRequest",
+      "description": "Player cashout and withdrawal requests to bKash/Nagad/Rocket personal numbers",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "userCode": { "type": "string" },
+        "userIdentifier": { "type": "string" },
+        "method": { "type": "string", "enum": ["bkash", "nagad", "rocket"] },
+        "personalNumber": { "type": "string" },
+        "amount": { "type": "number" },
+        "status": { "type": "string", "enum": ["pending", "completed", "rejected"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "method", "personalNumber", "amount", "status"]
+    },
+    "Transaction": {
+      "title": "Transaction",
+      "description": "Wallet deposit and withdrawal history",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "type": { "type": "string", "enum": ["deposit", "withdraw"] },
+        "amount": { "type": "number" },
+        "method": { "type": "string", "enum": ["bkash", "nagad", "rocket"] },
+        "accountNumber": { "type": "string" },
+        "status": { "type": "string", "enum": ["completed", "pending"] },
+        "trxId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "type", "amount", "method", "status"]
+    },
+    "BetRecord": {
+      "title": "BetRecord",
+      "description": "History of bets and game outcomes",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "gameType": { "type": "string", "enum": ["aviator", "wingo"] },
+        "stake": { "type": "number" },
+        "multiplier": { "type": "number" },
+        "payout": { "type": "number" },
+        "outcome": { "type": "string", "enum": ["won", "lost"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "gameType", "stake", "outcome"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles and persistent server balances"
+    },
+    "/users/{userId}/transactions/{transactionId}": {
+      "schema": "Transaction",
+      "description": "Subcollection of deposit and withdrawal transactions for a user"
+    },
+    "/users/{userId}/bets/{betId}": {
+      "schema": "BetRecord",
+      "description": "Subcollection of player bet history and game results"
+    },
+    "/deposit_requests/{requestId}": {
+      "schema": "DepositRequest",
+      "description": "Global queue of player deposit requests requiring admin review and approval"
+    },
+    "/withdrawal_requests/{requestId}": {
+      "schema": "WithdrawalRequest",
+      "description": "Global queue of player cashout and withdrawal requests requiring admin payout"
+    }
+  }
+}

@@ -1,0 +1,231 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Background Gradients -->
+    <radialGradient id="skywinBg" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="45%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </radialGradient>
+    <radialGradient id="goldenHalo" cx="50%" cy="38%" r="45%">
+      <stop offset="0%" stop-color="#ffb703" stop-opacity="0.35"/>
+      <stop offset="60%" stop-color="#fb8500" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    
+    <!-- Outer Gold Border Gradients -->
+    <linearGradient id="goldBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffeaa7"/>
+      <stop offset="25%" stop-color="#d4af37"/>
+      <stop offset="50%" stop-color="#fff3bf"/>
+      <stop offset="75%" stop-color="#aa7c11"/>
+      <stop offset="100%" stop-color="#ffd700"/>
+    </linearGradient>
+    <linearGradient id="innerGoldBorder" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8a6314"/>
+      <stop offset="50%" stop-color="#ffec99"/>
+      <stop offset="100%" stop-color="#aa7c11"/>
+    </linearGradient>
+
+    <!-- Jet Gradients -->
+    <linearGradient id="jetRed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff4757"/>
+      <stop offset="40%" stop-color="#ee1122"/>
+      <stop offset="85%" stop-color="#99000a"/>
+      <stop offset="100%" stop-color="#550005"/>
+    </linearGradient>
+    <linearGradient id="jetGoldTrim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff3bf"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+    <linearGradient id="jetCockpit" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#0284c7"/>
+      <stop offset="100%" stop-color="#0c2340"/>
+    </linearGradient>
+    <linearGradient id="thrusterFire" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="20%" stop-color="#ffea79"/>
+      <stop offset="60%" stop-color="#ff7b00"/>
+      <stop offset="100%" stop-color="#ff0044" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Text Gradients -->
+    <linearGradient id="goldTextGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="18%" stop-color="#ffea79"/>
+      <stop offset="55%" stop-color="#e69d00"/>
+      <stop offset="85%" stop-color="#9e6200"/>
+      <stop offset="100%" stop-color="#ffea79"/>
+    </linearGradient>
+    <linearGradient id="redTextGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff9999"/>
+      <stop offset="20%" stop-color="#ff2a3b"/>
+      <stop offset="65%" stop-color="#cc081b"/>
+      <stop offset="90%" stop-color="#7a000a"/>
+      <stop offset="100%" stop-color="#ff4d5a"/>
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="badgeShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#000000" flood-opacity="0.8"/>
+    </filter>
+    <filter id="glowEffect" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="intenseGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur1"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Base Badge Container -->
+  <rect x="20" y="20" width="472" height="472" rx="100" fill="url(#skywinBg)" filter="url(#badgeShadow)"/>
+  
+  <!-- Outer Gold Metallic Rim -->
+  <rect x="20" y="20" width="472" height="472" rx="100" fill="none" stroke="url(#goldBorder)" stroke-width="14"/>
+  <rect x="30" y="30" width="452" height="452" rx="90" fill="none" stroke="url(#innerGoldBorder)" stroke-width="3" opacity="0.8"/>
+  
+  <!-- Glowing Golden Circular Halo -->
+  <circle cx="260" cy="210" r="170" fill="url(#goldenHalo)"/>
+  <circle cx="260" cy="210" r="150" fill="none" stroke="url(#jetGoldTrim)" stroke-width="2.5" stroke-dasharray="12, 8" opacity="0.45"/>
+
+  <!-- Dramatic Sunset Clouds -->
+  <g opacity="0.32">
+    <ellipse cx="140" cy="310" rx="90" ry="40" fill="#f8fafc" filter="url(#glowEffect)"/>
+    <ellipse cx="260" cy="330" rx="110" ry="45" fill="#f1f5f9" filter="url(#glowEffect)"/>
+    <ellipse cx="380" cy="310" rx="95" ry="42" fill="#fed7aa" filter="url(#glowEffect)"/>
+    <ellipse cx="200" cy="340" rx="80" ry="35" fill="#fde68a" filter="url(#glowEffect)"/>
+  </g>
+
+  <!-- Jet Engine Thruster Flames & Light Rays -->
+  <g transform="rotate(-36 280 200)" filter="url(#intenseGlow)">
+    <!-- Jet Afterburner Plume -->
+    <path d="M120,230 L-60,215 L-120,230 L-60,245 Z" fill="url(#thrusterFire)"/>
+    <path d="M120,250 L-70,240 L-130,250 L-70,260 Z" fill="url(#thrusterFire)"/>
+    <!-- Intense core flame -->
+    <polygon points="120,232 -10,230 120,238" fill="#ffffff"/>
+    <polygon points="120,248 -10,250 120,254" fill="#ffffff"/>
+    <!-- Speed streaks -->
+    <line x1="80" y1="180" x2="-80" y2="180" stroke="#fef08a" stroke-width="3" stroke-linecap="round" opacity="0.85"/>
+    <line x1="100" y1="210" x2="-140" y2="210" stroke="#ffedd5" stroke-width="4" stroke-linecap="round"/>
+    <line x1="90" y1="270" x2="-110" y2="270" stroke="#fef08a" stroke-width="3" stroke-linecap="round" opacity="0.85"/>
+  </g>
+
+  <!-- Supersonic Red & Gold Fighter Jet (Facing Upper Right) -->
+  <g transform="translate(40, -10)">
+    <!-- Main Jet Body & Wings Group with 3D Rotation -->
+    <g transform="rotate(-36 260 210)" filter="url(#badgeShadow)">
+      <!-- Swept Wings -->
+      <path d="M220,130 L320,240 L260,255 L160,220 Z" fill="url(#jetGoldTrim)"/>
+      <path d="M225,140 L315,238 L265,250 L170,222 Z" fill="url(#jetRed)"/>
+      
+      <path d="M220,350 L320,240 L260,225 L160,260 Z" fill="url(#jetGoldTrim)"/>
+      <path d="M225,340 L315,242 L265,230 L170,258 Z" fill="url(#jetRed)"/>
+
+      <!-- Twin Vertical Stabilizers (Tail Fins) -->
+      <path d="M140,200 L200,225 L150,235 L120,220 Z" fill="url(#jetGoldTrim)"/>
+      <path d="M145,205 L195,226 L152,234 L128,222 Z" fill="url(#jetRed)"/>
+      
+      <path d="M140,280 L200,255 L150,245 L120,260 Z" fill="url(#jetGoldTrim)"/>
+      <path d="M145,275 L195,254 L152,246 L128,258 Z" fill="url(#jetRed)"/>
+
+      <!-- Main Fuselage -->
+      <path d="M430,240 L360,215 L220,220 L130,228 L125,252 L220,260 L360,265 Z" fill="url(#jetRed)"/>
+      
+      <!-- Gold Spine Ridge & Accents -->
+      <path d="M430,240 L370,235 L200,237 L130,239 L130,241 L200,243 L370,245 Z" fill="url(#jetGoldTrim)"/>
+      <polygon points="430,240 380,230 380,250" fill="url(#jetGoldTrim)"/>
+
+      <!-- Twin Engine Nozzles (Afterburners) -->
+      <rect x="112" y="226" width="16" height="12" rx="3" fill="url(#jetGoldTrim)"/>
+      <rect x="112" y="242" width="16" height="12" rx="3" fill="url(#jetGoldTrim)"/>
+      <ellipse cx="112" cy="232" rx="4" ry="6" fill="#ffea79" filter="url(#glowEffect)"/>
+      <ellipse cx="112" cy="248" rx="4" ry="6" fill="#ffea79" filter="url(#glowEffect)"/>
+
+      <!-- Cockpit Canopy Glass -->
+      <path d="M365,234 Q330,224 290,235 Q330,246 365,246 Z" fill="url(#jetCockpit)" stroke="url(#jetGoldTrim)" stroke-width="2.5"/>
+      <ellipse cx="335" cy="238" rx="14" ry="3.5" fill="#ffffff" opacity="0.75"/>
+
+      <!-- Golden Crown Badge on Tail -->
+      <path d="M165,236 L175,232 L172,240 L178,240 L168,244 Z" fill="url(#jetGoldTrim)"/>
+    </g>
+  </g>
+
+  <!-- Lens Flare Sparkles -->
+  <g filter="url(#glowEffect)">
+    <!-- Star 1 Top Right -->
+    <path d="M410,120 Q420,120 420,110 Q420,120 430,120 Q420,120 420,130 Q420,120 410,120" fill="#ffffff"/>
+    <circle cx="420" cy="120" r="3" fill="#ffea79"/>
+    <!-- Star 2 Left -->
+    <path d="M70,280 Q80,280 80,270 Q80,280 90,280 Q80,280 80,290 Q80,280 70,280" fill="#ffffff"/>
+    <circle cx="80" cy="280" r="2.5" fill="#ffea79"/>
+  </g>
+
+  <!-- ==================== 3D EMBOSSED "SkyWin" BRANDING ==================== -->
+  <g filter="url(#badgeShadow)">
+    <!-- Golden Crown over the 'W' -->
+    <g transform="translate(262, 305) scale(1.15)">
+      <path d="M-22,10 L-28,-12 L-10,-2 L0,-18 L10,-2 L28,-12 L22,10 Z" fill="url(#goldTextGrad)" stroke="#5c3e04" stroke-width="2"/>
+      <!-- Crown Jewels -->
+      <circle cx="-28" cy="-12" r="2.5" fill="#ffffff"/>
+      <circle cx="0" cy="-18" r="3" fill="#ff2233" stroke="#ffd700" stroke-width="1"/>
+      <circle cx="28" cy="-12" r="2.5" fill="#ffffff"/>
+      <circle cx="0" cy="2" r="2.5" fill="#ff2233"/>
+    </g>
+
+    <!-- "Sky" (Gold 3D Extrusion & Bevel) -->
+    <g transform="translate(48, 385)">
+      <!-- 3D Shadow Layers -->
+      <text x="0" y="8" font-family="'Plus Jakarta Sans', 'Arial Black', sans-serif" font-size="82" font-weight="900" font-style="italic" fill="#3b2203">Sky</text>
+      <text x="0" y="5" font-family="'Plus Jakarta Sans', 'Arial Black', sans-serif" font-size="82" font-weight="900" font-style="italic" fill="#784b05">Sky</text>
+      <text x="0" y="2" font-family="'Plus Jakarta Sans', 'Arial Black', sans-serif" font-size="82" font-weight="900" font-style="italic" stroke="#523201" stroke-width="8" fill="#523201">Sky</text>
+      <!-- Main Face -->
+      <text x="0" y="0" font-family="'Plus Jakarta Sans', 'Arial Black', sans-serif" font-size="82" font-weight="900" font-style="italic" fill="url(#goldTextGrad)" stroke="#fff4b8" stroke-width="1.5">Sky</text>
+    </g>
+
+    <!-- "Win" (Ruby Red 3D Extrusion with Golden Bevel) -->
+    <g transform="translate(205, 385)">
+      <!-- 3D Shadow Layers -->
+      <text x="0" y="8" font-family="'Plus Jakarta Sans', 'Arial Black', sans-serif" font-size="86" font-weight="900" font-style="italic" fill="#330005">Win</text>
+      <text x="0" y="5" font-family="'Plus Jakarta Sans', 'Arial Black', sans-serif" font-size="86" font-weight="900" font-style="italic" fill="#66000a">Win</text>
+      <text x="0" y="2" font-family="'Plus Jakarta Sans', 'Arial Black', sans-serif" font-size="86" font-weight="900" font-style="italic" stroke="#e69d00" stroke-width="8" fill="#88000d">Win</text>
+      <!-- Main Face -->
+      <text x="0" y="0" font-family="'Plus Jakarta Sans', 'Arial Black', sans-serif" font-size="86" font-weight="900" font-style="italic" fill="url(#redTextGrad)" stroke="#ffd700" stroke-width="2">Win</text>
+    </g>
+  </g>
+
+  <!-- ==================== WINGED "BD" PLAQUE AT BOTTOM ==================== -->
+  <g transform="translate(256, 436)" filter="url(#badgeShadow)">
+    <!-- Left Gold Wing Feathers -->
+    <path d="M-85,-2 L-150,-10 L-145,-4 L-85,4 Z" fill="url(#goldBorder)"/>
+    <path d="M-85,6 L-135,0 L-130,5 L-85,12 Z" fill="url(#goldBorder)"/>
+    <path d="M-85,14 L-115,10 L-110,14 L-85,18 Z" fill="url(#goldBorder)"/>
+
+    <!-- Right Gold Wing Feathers -->
+    <path d="M85,-2 L150,-10 L145,-4 L85,4 Z" fill="url(#goldBorder)"/>
+    <path d="M85,6 L135,0 L130,5 L85,12 Z" fill="url(#goldBorder)"/>
+    <path d="M85,14 L115,10 L110,14 L85,18 Z" fill="url(#goldBorder)"/>
+
+    <!-- Center Black Pill Plaque -->
+    <rect x="-82" y="-22" width="164" height="44" rx="22" fill="#080c14" stroke="url(#goldBorder)" stroke-width="4.5"/>
+    <rect x="-76" y="-17" width="152" height="34" rx="17" fill="none" stroke="url(#innerGoldBorder)" stroke-width="1.5" opacity="0.7"/>
+
+    <!-- Embossed "BD" Text -->
+    <text x="0" y="10" font-family="'Plus Jakarta Sans', 'Arial Black', sans-serif" font-size="34" font-weight="900" fill="url(#goldTextGrad)" text-anchor="middle" letter-spacing="4" stroke="#5c3e04" stroke-width="1.5">
+      BD
+    </text>
+  </g>
+
+  <!-- Glossy Glass Highlight Overlay (Top Left Arc) -->
+  <path d="M30,120 Q30,30 120,30 L392,30 Q330,80 200,90 Q70,100 30,220 Z" fill="#ffffff" opacity="0.08"/>
+</svg>
